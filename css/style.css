@@ -1,0 +1,261 @@
+@font-face {
+	font-family: 'HSE Sans'; 
+    font-weight: bold;
+	src: url(../fonts/HSESans-Bold.otf); 
+}
+
+@font-face {
+	font-family: 'HSE Sans'; 
+    font-style: italic;
+	src: url(../fonts/HSESans-Italic.otf); 
+}
+
+@font-face {
+	font-family: 'HSE Sans'; 
+    font-weight: normal;
+	src: url(../fonts/HSESans-Regular.otf); 
+}
+
+body {
+    font-family: 'HSE Sans';
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: .5rem;
+    font-weight: 600;
+    line-height: 1.64;
+    color: #000;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer
+}
+
+a:hover {
+    text-decoration: none;
+    color: var(rgba(0,0,0,.5));
+}
+
+.space-md {
+    padding-top: 90px;
+    padding-bottom: 90px
+}
+
+.container {
+    max-width: 1440px
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #000;
+    letter-spacing: .04rem;
+}
+
+.navbar-brand {
+    display: inline-block;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+.logo {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.text-link {
+    text-decoration-line: underline;
+    color: #000;
+}
+
+.text-link:hover {
+    color: var(rgba(0,0,0,.5));
+}
+
+.maintitle {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 60px;
+}
+
+.back {
+    border-radius: 10px;
+    background: linear-gradient( rgba(16,45,105, 0.5), rgba(16,45,105, 0.1)), url("../img/print.JPG") center/cover;
+}
+
+.how {
+    padding-top: 60px;
+}
+
+.line {
+    color: #000;
+    size: 0px; 
+    width: 100%;
+}
+
+.sticky {
+    position: sticky;
+    top: -2em;
+    margin-bottom: -2em;
+    padding-top: 7em;
+}
+
+.frame {
+    border: 5px solid #000000;
+}
+
+table {
+    border: 2px solid #000;
+    width: 100%;
+
+ }
+ /* границы ячеек первого ряда таблицы */
+ th {
+    padding: 10px;
+    border: 2px solid #000;
+ }
+ /* границы ячеек тела таблицы */
+ td {
+    padding: 10px;
+    border: 2px solid #000;
+ }
+
+ .table-title{
+    caption-side: top;
+ }
+
+ .auth {
+    background: linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.3)), url(../img/back.jpg);
+    -webkit-background-size: cover;
+	background-size: cover;
+	background-attachment: fixed;
+    margin: 0px 10px;
+}
+
+.rowauth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.form {
+	background: rgba(16,45,109, 0.85);
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.form h1 {
+	padding: 0;
+	text-align: center;
+	color: #fff;
+	font-size: 30px;
+	text-transform: uppercase;
+}
+
+.input-form {
+	margin: 15px 40px;
+	text-align: center;
+}
+
+.input-form input {
+	padding: 10px;
+	width: 100%;
+	color: #fff;
+	font-size: 20px;
+	background: none;
+	outline: none;
+	border: 1px solid #fff;
+	box-sizing: border-box;
+}
+
+.input-form input[type="text"]:focus, .input-form input[type="password"]:focus {
+	border: 1px solid #9d9d9c;
+}
+
+.input-form input[type="submit"] {
+	margin-top: 20px;
+	color: #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+	border: none;
+	background: #244a9a;
+	transition: .3s;
+    border-radius: 20px;
+    
+}
+
+.input-form input[type="submit"]:hover {
+	background: #264da1;
+}
+
+.input-form input[type="submit"]:active{
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
+}
+
+/* Скрываем scrollbar для Chrome, Safari и Opera */
+.slider_list-g::-webkit-scrollbar {
+    display: none;
+  }
+   
+  /* Скрываем scrollbar для IE, Edge и Firefox */
+  .slider_list-g {
+    -ms-overflow-style: none;  /* IE и Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .sub_input{
+    padding-bottom: 20px;
+  }
+
+  .sub-form input[type="submit"] {
+    
+	margin-top: 20px;
+
+	color: #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+	border: none;
+	background: #244a9a;
+	transition: .3s;
+    border-radius: 20px;
+
+    padding: 10px 30px;
+    
+	font-size: 20px;
+	outline: none;
+	border: 1px solid #fff;
+	
+    
+}
+
+.sub-form input[type="submit"]:hover {
+	background: #264da1;
+}
+
+.sub-form input[type="submit"]:active{
+    transform: scale(0.98);
+    /* Scaling button to 0.98 to its original size */
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    /* Lowering the shadow */
+}
