@@ -42,17 +42,28 @@ if (mysqli_num_rows($resultScan) > 0){
     echo '<h3><a href="scan.php" class="button beer-button-blue">СКАНИРОВАТЬ ЕЩЕ РАЗ</a></h3>';
     ?>
     <form action="" method="POST" target="_self">
-    <input type="submit" name="submit" value="Взять книгу" />
+    <input type="submit" name="takebook" value="Взять книгу" />
+    <input type="submit" name="returnbook" value="Вернуть книгу" />
     </form>
     <?php
-    if (isset($_POST['submit'])) {
+    if (isset($_POST['takebook'])) {
         $queryS = mysqli_query($db, "SELECT * FROM `rfid_uid_area` WHERE `uid`='{$currentBook}'");
         if (mysqli_num_rows($queryS) == 0) {
             mysqli_query($db, "INSERT INTO `rfid_uid_area` (`uid`, `area`, `pid`) VALUES ('{$currentBook}', 'Выдано', '{$currentUser}')");
-            header("Location: user.php");
+            echo ('Вы успешно взяли книгу');
         } else {
             mysqli_query($db, "UPDATE `rfid_uid_area` SET `area` = 'Выдано', `pid` = '{$currentUser}' WHERE `rfid_uid_area`.`uid` = '{$currentBook}'");
-            header("Location: user.php");
+            echo ('Вы успешно взяли книгу');
+        }
+      }
+
+      if (isset($_POST['returnbook'])) {
+        $queryR = mysqli_query($db, "SELECT * FROM `rfid_uid_area` WHERE `uid`='{$currentBook}'");
+        if (mysqli_num_rows($queryR) == 0) {
+            echo ('Вы не можете вернуть эту книгу, так как её нет в базе данных');
+        } else {
+            mysqli_query($db, "UPDATE `rfid_uid_area` SET `area` = 'Библиотека', `pid` = '0' WHERE `rfid_uid_area`.`uid` = '{$currentBook}'");
+            echo ('Вы успешно вернули книгу');
         }
       }
     ?>

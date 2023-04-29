@@ -19,7 +19,7 @@ if (isset($_SESSION['user'])) {
 </head>
 <body>
 <?php 
-echo '<h3><a href="scan.php" class="button beer-button-blue">ВЗЯТЬ КНИГУ</a></h3>';
+echo '<h3><a href="scan.php" class="button beer-button-blue">ВЗЯТЬ/СДАТЬ КНИГУ</a></h3>';
 echo '<h3><a href="exit.php" class="button beer-button-blue">ВЫЙТИ</a></h3>';
 ?>
 </form>
