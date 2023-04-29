@@ -7,14 +7,21 @@ if (isset($_SESSION['user'])) {
     echo("Вы не авторизированы.");
 }
 
-// "SELECT * FROM `history` ORDER BY time DESC LIMIT 1"
+?>
 
-  
-$resultScan = mysqli_query($db, "SELECT * FROM `history` ORDER BY time DESC LIMIT 1");
-if (mysqli_num_rows($resultScan) > 0){
-    while($rowData = mysqli_fetch_assoc($resultScan)){
-        echo 'Последняя отсканированная книга: '.$rowData["uid"].'<br>';
-    }
-}else {
-    echo("Ошибка");
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню</title>
+</head>
+<body>
+<?php 
+echo '<h3><a href="scan.php" class="button beer-button-blue">СКАНИРОВАТЬ КНИГУ</a></h3>';
+?>
+</form>
+</body>
+</html>
+
