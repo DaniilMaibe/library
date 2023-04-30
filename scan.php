@@ -58,14 +58,17 @@ if (mysqli_num_rows($resultScan) > 0){
       }
 
       if (isset($_POST['returnbook'])) {
-        $queryR = mysqli_query($db, "SELECT * FROM `rfid_uid_area` WHERE `uid`='{$currentBook}'");
+        $queryR = mysqli_query($db, "SELECT * FROM `rfid_uid_area` WHERE `uid`='{$currentBook}' and `pid` = '{$currentUser}'");
         if (mysqli_num_rows($queryR) == 0) {
-            echo ('Вы не можете вернуть эту книгу, так как её нет в базе данных');
+            echo ('Вы не можете вернуть эту книгу, так как её нет в базе данных или она взята не Вами');
         } else {
             mysqli_query($db, "UPDATE `rfid_uid_area` SET `area` = 'Библиотека', `pid` = '0' WHERE `rfid_uid_area`.`uid` = '{$currentBook}'");
             echo ('Вы успешно вернули книгу');
         }
       }
+
+      
+    echo '<h3><a href="user.php" class="button beer-button-blue">НАЗАД</a></h3>';
     ?>
 </body>
 </html>
