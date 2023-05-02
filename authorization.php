@@ -15,4 +15,5 @@ if (mysqli_num_rows($resultAll) > 0){
 	}
 }else {
     echo("Ошибка: Данный логин или пароль неправильны.");
+	echo '<h3><a href="exit.php" class="button beer-button-blue">ВЫЙТИ</a></h3>';
 }

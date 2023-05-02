@@ -30,29 +30,24 @@
     <div class="row rowauth">
         <div class="col-lg-4 col-md-3 col-sm-1"></div>
         <div class="col-lg-4 col-md-6 col-sm-10">
-            <div class="form">
+            <form class="form" action="authorization.php" method="post">
                 <h1>Авторизация</h1>
                 <div class="input-form">
-                    <input type="text" placeholder="Логин">
+                    <input type="text" placeholder="Логин" name="login">
                 </div>
                 <div class="input-form">
-                    <input type="password" placeholder="Пароль">
+                    <input type="password" placeholder="Пароль" name="password">
                 </div>
                 <div class="input-form">
                     <input type="submit" value="Войти">
-                </div>
+                </form>
             </div>
         </div>
         <div class="col-lg-4 col-md-3 col-sm-1"></div>
     </div>
 
     <div>
-        <form style="display: inline-grid;" action="authorization.php" method="post">
-            Авторизация<br>
-            Телефон/логин: <input name="login" type="text">
-            Пароль: <input name="password" type="password">
-            <input type="submit">
-        </form>
+        
         <!-- Форма регистрации -->
         <form style="display: inline-grid; margin-left: 30px;" action="registration.php" method="post">
             Регистрация<br>
