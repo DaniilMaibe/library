@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 04 2023 г., 20:16
+-- Время создания: Май 04 2023 г., 21:54
 -- Версия сервера: 10.4.28-MariaDB
 -- Версия PHP: 8.2.4
 
@@ -39,11 +39,9 @@ CREATE TABLE `authorization` (
 
 INSERT INTO `authorization` (`id`, `login`, `password`) VALUES
 (15, 'admin', 'admin'),
-(17, '89004868206', '12345'),
-(18, '', ''),
-(19, '', ''),
-(20, '89004868201', '123423'),
-(21, '890048681324', '123423');
+(24, 'dsc', 'admin'),
+(25, '', ''),
+(26, '54321', 'admin');
 
 -- --------------------------------------------------------
 
@@ -94,9 +92,9 @@ INSERT INTO `history` (`id`, `time`, `uid`) VALUES
 
 CREATE TABLE `person_info` (
   `phone` varchar(12) NOT NULL,
-  `first_name` varchar(30) NOT NULL,
-  `last_name` varchar(30) NOT NULL,
-  `birthday` varchar(20) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `patronymic` varchar(50) NOT NULL,
   `email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -104,7 +102,9 @@ CREATE TABLE `person_info` (
 -- Дамп данных таблицы `person_info`
 --
 
-INSERT INTO `person_info` (`phone`, `first_name`, `last_name`, `birthday`, `email`) VALUES
+INSERT INTO `person_info` (`phone`, `first_name`, `last_name`, `patronymic`, `email`) VALUES
+('', '', '', '', ''),
+('54321', 'Анна', 'Кретова', 'Андреевна', 'ef@edu.hse.ru'),
 ('890048681324', '', '', '', ''),
 ('89004868201', 'Дан', 'Чу', 'фвавфа', 'adfadf@saf'),
 ('89004868206', 'Анна', 'Кретова', '10/08/2001', 'ak@mail.ru'),
@@ -196,7 +196,7 @@ ALTER TABLE `rfid_uid_name`
 -- AUTO_INCREMENT для таблицы `authorization`
 --
 ALTER TABLE `authorization`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT для таблицы `history`
