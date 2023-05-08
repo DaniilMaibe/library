@@ -9,7 +9,7 @@ if (isset($_SESSION['user'])) {
 }
 
 // "SELECT * FROM `history` ORDER BY time DESC LIMIT 1"
-
+echo '<h1>'.' ВЗЯТЬ КНИГУ '.'</h1>';
   
 $resultScan = mysqli_query($db, "SELECT * FROM `history` ORDER BY time DESC LIMIT 1");
 $currentBook = 0;
@@ -39,31 +39,20 @@ if (mysqli_num_rows($resultScan) > 0){
 </head>
 <body>
     <?php 
-    echo '<h3><a href="scan.php" class="button beer-button-blue">СКАНИРОВАТЬ ЕЩЕ РАЗ</a></h3>';
+    echo '<h3><a href="scan_take.php" class="button beer-button-blue">СКАНИРОВАТЬ ЕЩЕ РАЗ</a></h3>';
     ?>
     <form action="" method="POST" target="_self">
     <input type="submit" name="takebook" value="Взять книгу" />
-    <input type="submit" name="returnbook" value="Вернуть книгу" />
     </form>
     <?php
     if (isset($_POST['takebook'])) {
         $queryS = mysqli_query($db, "SELECT * FROM `rfid_uid_area` WHERE `uid`='{$currentBook}'");
         if (mysqli_num_rows($queryS) == 0) {
-            mysqli_query($db, "INSERT INTO `rfid_uid_area` (`uid`, `area`, `pid`) VALUES ('{$currentBook}', 'Выдано', '{$currentUser}')");
+            mysqli_query($db, "INSERT INTO `rfid_uid_area` (`uid`, `area`, `pid`, `date_take`) VALUES ('{$currentBook}', 'Выдано', '{$currentUser}', NOW() )");
             echo ('Вы успешно взяли книгу');
         } else {
-            mysqli_query($db, "UPDATE `rfid_uid_area` SET `area` = 'Выдано', `pid` = '{$currentUser}' WHERE `rfid_uid_area`.`uid` = '{$currentBook}'");
+            mysqli_query($db, "UPDATE `rfid_uid_area` SET `area` = 'Выдано', `pid` = '{$currentUser}', `date_take` = NOW() WHERE `rfid_uid_area`.`uid` = '{$currentBook}'");
             echo ('Вы успешно взяли книгу');
-        }
-      }
-
-      if (isset($_POST['returnbook'])) {
-        $queryR = mysqli_query($db, "SELECT * FROM `rfid_uid_area` WHERE `uid`='{$currentBook}' and `pid` = '{$currentUser}'");
-        if (mysqli_num_rows($queryR) == 0) {
-            echo ('Вы не можете вернуть эту книгу, так как её нет в базе данных или она взята не Вами');
-        } else {
-            mysqli_query($db, "UPDATE `rfid_uid_area` SET `area` = 'Библиотека', `pid` = '0' WHERE `rfid_uid_area`.`uid` = '{$currentBook}'");
-            echo ('Вы успешно вернули книгу');
         }
       }
 

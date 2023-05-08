@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Май 04 2023 г., 21:54
+-- Время создания: Май 08 2023 г., 11:11
 -- Версия сервера: 10.4.28-MariaDB
 -- Версия PHP: 8.2.4
 
@@ -39,9 +39,17 @@ CREATE TABLE `authorization` (
 
 INSERT INTO `authorization` (`id`, `login`, `password`) VALUES
 (15, 'admin', 'admin'),
-(24, 'dsc', 'admin'),
-(25, '', ''),
-(26, '54321', 'admin');
+(17, '89004868206', '12345'),
+(18, '', ''),
+(19, '', ''),
+(20, '89004868201', '123423'),
+(21, '890048681324', '123423'),
+(22, '89991726541', 'FVe7ujrupJK'),
+(23, '89991726542', '123'),
+(24, '89991726543', '12345'),
+(25, '81291726543', '12345'),
+(26, '89991752534', '12345'),
+(27, '901380192384134143', 'admin');
 
 -- --------------------------------------------------------
 
@@ -92,9 +100,9 @@ INSERT INTO `history` (`id`, `time`, `uid`) VALUES
 
 CREATE TABLE `person_info` (
   `phone` varchar(12) NOT NULL,
-  `first_name` varchar(50) NOT NULL,
-  `last_name` varchar(50) NOT NULL,
-  `patronymic` varchar(50) NOT NULL,
+  `first_name` varchar(30) NOT NULL,
+  `last_name` varchar(30) NOT NULL,
+  `patronymic` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -103,12 +111,15 @@ CREATE TABLE `person_info` (
 --
 
 INSERT INTO `person_info` (`phone`, `first_name`, `last_name`, `patronymic`, `email`) VALUES
-('', '', '', '', ''),
-('54321', 'Анна', 'Кретова', 'Андреевна', 'ef@edu.hse.ru'),
+('81291726543', '', '', '', ''),
 ('890048681324', '', '', '', ''),
 ('89004868201', 'Дан', 'Чу', 'фвавфа', 'adfadf@saf'),
 ('89004868206', 'Анна', 'Кретова', '10/08/2001', 'ak@mail.ru'),
-('89991726541', 'Даниил', 'Чуйко', '16.10.2001', 'da@mail.ru');
+('89991726541', 'Даниил', 'Чуйко', '16.10.2001', 'da@mail.ru'),
+('89991726542', '', '', '', ''),
+('89991726543', '', '', '', ''),
+('89991752534', '', '', '', ''),
+('901380192384', 'adfd', 'adfad', 'adf', 'admin@jafpoadf.rt');
 
 -- --------------------------------------------------------
 
@@ -119,18 +130,19 @@ INSERT INTO `person_info` (`phone`, `first_name`, `last_name`, `patronymic`, `em
 CREATE TABLE `rfid_uid_area` (
   `uid` varchar(12) NOT NULL,
   `area` varchar(50) NOT NULL,
-  `pid` varchar(12) NOT NULL
+  `pid` varchar(12) NOT NULL,
+  `date_take` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Дамп данных таблицы `rfid_uid_area`
 --
 
-INSERT INTO `rfid_uid_area` (`uid`, `area`, `pid`) VALUES
-('1', 'Выдано', '2'),
-('2343894027', 'Библиотека', '0'),
-('3034860643', 'Библиотека', '0'),
-('4', 'Библиотека', '0');
+INSERT INTO `rfid_uid_area` (`uid`, `area`, `pid`, `date_take`) VALUES
+('1', 'Выдано', '2', '0000-00-00'),
+('2343894027', 'Библиотека', '0', '0000-00-00'),
+('3034860643', 'Выдано', 'admin', '2023-05-08'),
+('4', 'Библиотека', '0', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -196,7 +208,7 @@ ALTER TABLE `rfid_uid_name`
 -- AUTO_INCREMENT для таблицы `authorization`
 --
 ALTER TABLE `authorization`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT для таблицы `history`
