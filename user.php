@@ -93,17 +93,16 @@ include("db_connect.php");
             WHERE pid = '{$currentUser}'");
             //$rowDataA = mysqli_fetch_assoc($resultAllBooks);
             foreach ($resultAllBooks as $f) {
-
                 $newDate = new DateTime($f["date_take"]);
+                $newDate_take = $newDate->format('d-m-Y');
                 $newDate->add(new DateInterval('P14D')); // P14D means a period of 14 days
                 $deadline = $newDate->format('d-m-Y');
-            
                 ?>
                 <tr>
                     <td><?=$f['uid'] ?></td>
                     <td><?=$f['author'] ?></td>
                     <td><?=$f['name'] ?></td>
-                    <td><?=$f['date_take'] ?></td>
+                    <td><?=$newDate_take ?></td>
                     <td><?=$deadline?></td>
                 </tr>
                 
