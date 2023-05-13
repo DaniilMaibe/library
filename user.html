@@ -22,15 +22,51 @@
                 <ul class="navbar-nav ml-auto" id="menu">
                     <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="index.html" >Главная</a> </li>
                     <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="manual.html">Инструкция</a> </li>
-                    <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="user.html" style="font-weight:bold;">Личный кабинет</a> </li>
+                    <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="user.php" style="font-weight:bold;">Личный кабинет</a> </li>
                     <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="exit.php">Выйти</a> </li>
                 </ul>
             </div>
         </div>
     </header>
+
+    <div class="row" style="padding-top: 80px;">
+        
+    </div>
     <div class="row">
-        <a class="button_user" style="margin-top: 100px;" href="scan.php" role="button">Взять книгу</a>
-        <a class="button_user" style="margin-top: 100px;" href="scan.php" role="button">Вернуть книгу</a>
+        <h2>Список взятых книг: </h2>
+
+        
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Автор</th>
+                <th scope="col">Название</th>
+                <th scope="col">Дата вязтия</th>
+                <th scope="col">Дата возврата </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>@mdo</td>
+                </tr>
+              
+            </tbody>
+        </table>
+        
+    </div>
+    <div class="row">
+        <div class="col-6">
+        <a class="button_user" style="margin-top: 100px;" href="scan_take.html" role="button">Взять книгу</a>
+        </div>
+        <div class="col-6">
+        <a class="button_user" style="margin-top: 100px;" href="scan_return.html" role="button">Вернуть книгу</a>
+        </div>
     </div>
     
 

@@ -33,28 +33,53 @@
             <form action="registration.php" method="post">
                 <h1 style="text-align:center; padding-bottom: 10px;">Регистрация</h1>
                 <div class="input-form inp_reg">
-                    <input name="last_name" type="text" placeholder="Фамилия">
+                    <input name="last_name" type="text" placeholder="Фамилия" required>
                 </div>
                 <div class="input-form inp_reg">
-                    <input name="first_name" type="text" placeholder="Имя">
+                    <input name="first_name" type="text" placeholder="Имя" required>
                 </div>
                 <div class="input-form inp_reg">
                     <input name="patronymic" type="text" placeholder="Отчество">
                 </div>
                 <div class="input-form inp_reg">
-                    <input name="email" type="email" placeholder="Почта">
+                    <input name="email" type="email" placeholder="Почта" required>
                 </div>
                 
                 <div class="input-form inp_reg">
-                    <input name="login" type="tel" placeholder="Телефон">
+                    <input name="login" type="tel" pattern="8[0-9]{10}" placeholder="Телефон (89991234567)" required>
                 </div>
                 <div class="input-form inp_reg">
-                    <input name="password" type="password" placeholder="Пароль">
+                    <input name="password" type="password" placeholder="Пароль" required>
                 </div>
 
+                <?php
+                session_start();
+                include("db_connect.php");
+                $login = $_POST['login'];
+                $password = $_POST['password'];
+                $first_name = $_POST['first_name'];
+                $last_name = $_POST['last_name'];
+                $email = $_POST['email'];
+                $patronymic = $_POST['patronymic'];
+                //$md5_password = md5($password);
+                $query = mysqli_query($db, "SELECT * FROM `authorization` WHERE `login`='{$login}'");
+                if (mysqli_num_rows($query) == 0) {
+                    $_SESSION['user'] = ['nick' => $login];
+                    mysqli_query($db, "INSERT INTO `authorization` (`login`, `password`) VALUES ('{$login}', '{$password}')");
+                    mysqli_query($db, "INSERT INTO `person_info` (`phone`, `first_name`, `last_name`, `patronymic`, `email`) VALUES ('{$login}', '{$first_name}', '{$last_name}', '{$patronymic}', '{$email}')");
+                    header("Location: user.php");
+                } else {
+                    echo '<div style="padding: 0;
+                    text-align: center;">'.'Ошибка: Данный телефон уже зарегистрирован.'.'</div>';
+                }
+
+                ?>
+
                 <div class="input-form">
-                    <input type="submit" value="Зарегистрироваться">
+                    <input type="submit" style="margin-top:0px" value="Зарегистрироваться">
                 </div>
+
+                
             </form>
         </div>
         <div class="col-lg-3s col-md-3 col-sm-1"></div>
@@ -65,24 +90,3 @@
 </body>
 </html>
 
-<?php
-session_start();
-include("db_connect.php");
-$login = $_POST['login'];
-$password = $_POST['password'];
-$first_name = $_POST['first_name'];
-$last_name = $_POST['last_name'];
-$email = $_POST['email'];
-$patronymic = $_POST['patronymic'];
-//$md5_password = md5($password);
-$query = mysqli_query($db, "SELECT * FROM `authorization` WHERE `login`='{$login}'");
-if (mysqli_num_rows($query) == 0) {
-    $_SESSION['user'] = ['nick' => $login];
-    mysqli_query($db, "INSERT INTO `authorization` (`login`, `password`) VALUES ('{$login}', '{$password}')");
-    mysqli_query($db, "INSERT INTO `person_info` (`phone`, `first_name`, `last_name`, `patronymic`, `email`) VALUES ('{$login}', '{$first_name}', '{$last_name}', '{$patronymic}', '{$email}')");
-    header("Location: user.php");
-} else {
-    echo '<h3 style="background: white; color:red">'.'Ошибка: Данный телефон уже зарегистрирован.'.'</h3>';
-}
-
-?>

@@ -33,23 +33,23 @@
             <form action="registration.php" method="post">
                 <h1 style="text-align:center; padding-bottom: 10px;">Регистрация</h1>
                 <div class="input-form inp_reg">
-                    <input name="last_name" type="text" placeholder="Фамилия">
+                    <input name="last_name" type="text" placeholder="Фамилия" required>
                 </div>
                 <div class="input-form inp_reg">
-                    <input name="first_name" type="text" placeholder="Имя">
+                    <input name="first_name" type="text" placeholder="Имя" required>
                 </div>
                 <div class="input-form inp_reg">
                     <input name="patronymic" type="text" placeholder="Отчество">
                 </div>
                 <div class="input-form inp_reg">
-                    <input name="email" type="email" placeholder="Почта">
+                    <input name="email" type="email" placeholder="Почта" required>
                 </div>
                 
                 <div class="input-form inp_reg">
-                    <input name="login" type="tel" placeholder="Телефон">
+                    <input name="login" type="tel" pattern="8[0-9]{10}" placeholder="Телефон (89991234567)" required>
                 </div>
                 <div class="input-form inp_reg">
-                    <input name="password" type="password" placeholder="Пароль">
+                    <input name="password" type="password" placeholder="Пароль" required>
                 </div>
 
                 <div class="input-form">

@@ -33,11 +33,32 @@
             <form style="padding-bottom: 0px;" class="form" action="authorization.php" method="post">
                 <h1>Авторизация</h1>
                 <div class="input-form inp_auth">
-                    <input type="text" placeholder="Логин" name="login">
+                    <input type="text" placeholder="Телефон (89991234567)" pattern="8[0-9]{10}" name="login">
                 </div>
                 <div class="input-form inp_auth">
                     <input type="password" placeholder="Пароль" name="password">
                 </div>
+                <?php
+                session_start();
+                include("db_connect.php");
+                $login = $_POST['login'];
+                $password = $_POST['password'];
+                // $md5_password = md5($password);
+
+                $resultAll = mysqli_query($db, "SELECT * FROM `authorization` WHERE `login`='{$login}' AND `password`='{$password}'");
+
+                if (mysqli_num_rows($resultAll) > 0){
+                    while($rowData = mysqli_fetch_assoc($resultAll)){
+                        echo $rowData["category_name"].'<br>';
+                        $_SESSION['user'] = ['nick' => $login];
+                        header("Location: user.php");
+                    }
+                }else {
+                    echo '<div style="padding: 0;
+                    text-align: center;
+                    color: #fff;">'.'Неправильный логин или пароль.'.'</div>';
+                }
+                ?>
                 <div class="input-form" style="margin-bottom: 0px;">
                     <input type="submit" value="Войти">
                 </div>
@@ -57,23 +78,3 @@
 </body>
 </html>
 
-<?php
-session_start();
-include("db_connect.php");
-$login = $_POST['login'];
-$password = $_POST['password'];
-// $md5_password = md5($password);
-
-$resultAll = mysqli_query($db, "SELECT * FROM `authorization` WHERE `login`='{$login}' AND `password`='{$password}'");
-
-if (mysqli_num_rows($resultAll) > 0){
-	while($rowData = mysqli_fetch_assoc($resultAll)){
-		echo $rowData["category_name"].'<br>';
-		$_SESSION['user'] = ['nick' => $login];
-		header("Location: user.php");
-	}
-}else {
-    echo '<h3 style="background: white;">'.'Ошибка: Данный логин или пароль неправильны.'.'</h3>';
-	echo '<h3 style="background: white;"><a href="exit.php" class="button beer-button-blue">ВЫЙТИ</a></h3>';
-}
-?>
