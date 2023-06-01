@@ -23,11 +23,10 @@ include("db_connect.php");
 
     <header class="navbar navbar-expand-lg navbar-light bg-white fixed-top py-3" id="mainNav">
         <div class="container"> 
-            <a class="navbar-brand js-scroll-trigger" href="index.html" style="font-weight: bold;"><img class="logo" src="img/logo.png" alt="3D MIEM">БИБЛИОТЕКА МИЭМ</a>
+            <a class="navbar-brand js-scroll-trigger" href="manual.html" style="font-weight: bold;"><img class="logo" src="img/logo.png" alt="3D MIEM">БИБЛИОТЕКА МИЭМ</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto" id="menu">
-                    <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="index.html" >Главная</a> </li>
                     <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="manual.html">Инструкция</a> </li>
                     <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="user.php" style="font-weight:bold;">Личный кабинет</a> </li>
                     <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="exit.php">Выйти</a> </li>
@@ -82,7 +81,7 @@ include("db_connect.php");
                 <th scope="col">ID</th>
                 <th scope="col">Автор</th>
                 <th scope="col">Название</th>
-                <th scope="col">Дата взятия</th>
+                <th scope="col">Дата вязтия</th>
                 <th scope="col">Дата возврата </th>
                 </tr>
             </thead>
@@ -93,16 +92,19 @@ include("db_connect.php");
             WHERE pid = '{$currentUser}'");
             //$rowDataA = mysqli_fetch_assoc($resultAllBooks);
             foreach ($resultAllBooks as $f) {
+
                 $newDate = new DateTime($f["date_take"]);
-                $newDate_take = $newDate->format('d-m-Y');
+                $newdatetake = $newDate->format('d-m-Y');
                 $newDate->add(new DateInterval('P14D')); // P14D means a period of 14 days
                 $deadline = $newDate->format('d-m-Y');
+                
+            
                 ?>
                 <tr>
                     <td><?=$f['uid'] ?></td>
                     <td><?=$f['author'] ?></td>
                     <td><?=$f['name'] ?></td>
-                    <td><?=$newDate_take ?></td>
+                    <td><?=$newdatetake ?></td>
                     <td><?=$deadline?></td>
                 </tr>
                 

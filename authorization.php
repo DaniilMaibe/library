@@ -15,11 +15,10 @@
 
     <header class="navbar navbar-expand-lg navbar-light bg-white fixed-top py-3" id="mainNav">
         <div class="container"> 
-            <a class="navbar-brand js-scroll-trigger" href="index.html" style="font-weight: bold;"><img class="logo" src="img/logo.png" alt="3D MIEM">БИБЛИОТЕКА МИЭМ</a>
+            <a class="navbar-brand js-scroll-trigger" href="manual.html" style="font-weight: bold;"><img class="logo" src="img/logo.png" alt="3D MIEM">БИБЛИОТЕКА МИЭМ</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto" id="menu">
-                    <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="index.html" >Главная</a> </li>
                     <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="manual.html">Инструкция</a> </li>
                     <li class="nav-item"> <a class="nav-link js-scroll-trigger" href="auth.html"  style="font-weight:bold;">Войти</a> </li>
                 </ul>
